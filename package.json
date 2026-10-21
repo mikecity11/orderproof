@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild app.js --bundle --format=esm --outfile=dist/app.js"
+    "build": "node scripts/build.mjs",
+    "test": "python3 -m unittest discover -s tests -v"
   },
   "keywords": [],
   "author": "",

@@ -22,3 +22,16 @@ Network migration: stable StudioNet preset, chain ID 61999, RPC https://studio.g
 Contract: 0x27283aB5Dd183985d57AFa67Ee4fE54387404853
 Transaction: 0x76d1b92658a53eb69477a3f149527b44acaf386b68d07f456f4197d181e95407
 Receipt: ACCEPTED, MAJORITY_AGREE, constructor SUCCESS. Read get_count returned 0. Agreement writes and AI assessment not yet live tested. Deployment used a separate faucet-funded development account. No user wallet funds used.
+
+## GitHub development — 21 October 2026
+Canonical user repository: https://github.com/mikecity11/orderproof .
+Source imported from the existing Site; generated `dist/app.js` is rebuilt with `npm ci && npm run build`.
+Run `npm test` for deterministic lifecycle and authorization tests. These use a mocked GenLayer runtime and do not prove network consensus.
+
+### Evidence flow improvements (not deployed)
+- Assessment requires an evidence statement from both parties. There is no response timeout yet; a nonresponsive party blocks assessment.
+- An insufficient-evidence case can be reopened by adding evidence, preserving previous assessments in `assessment_history`.
+- Optional file digests must be SHA-256 hexadecimal strings; files themselves are not uploaded or inspected.
+- GitHub Actions runs tests and the frontend build.
+
+The deployed StudioNet address above still runs the earlier contract. The revised contract needs a fresh deployment and live lifecycle verification before the interface can rely on these contract guarantees. Do not treat this GitHub update as a redeployment. Existing onchain records are not migrated automatically.

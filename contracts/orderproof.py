@@ -63,10 +63,17 @@ class OrderProof(gl.Contract):
     @gl.public.write
     def submit_evidence(self, agreement_id: str, statement: str, digest: str) -> None:
         a, sender = self._load(agreement_id)
-        if a['status'] not in ['Active', 'Delivered', 'Disputed'] or len(a['evidence']) >= 20:
+        reopening = a['status'] == 'Assessed' and a.get('assessment', {}).get('outcome') == 'INSUFFICIENT_EVIDENCE'
+        if (a['status'] not in ['Active', 'Delivered', 'Disputed'] and not reopening) or len(a['evidence']) >= 20:
             raise Exception('Evidence not allowed')
         if not statement.strip() or len(statement) > 4000 or len(digest) > 128:
             raise Exception('Invalid evidence')
+        if digest and (len(digest) != 64 or any(c not in '0123456789abcdefABCDEF' for c in digest)):
+            raise Exception('Digest must be a SHA-256 hex string')
+        if reopening:
+            a.setdefault('assessment_history', []).append(a['assessment'])
+            a['assessment'] = None
+            a['status'] = 'Disputed'
         a['evidence'].append(dict(author=sender, statement=statement, digest=digest))
         self.records[agreement_id] = json.dumps(a)
 
@@ -83,6 +90,9 @@ class OrderProof(gl.Contract):
         a, sender = self._load(agreement_id)
         if a['status'] != 'Disputed':
             raise Exception('Open a dispute first')
+        authors = {e['author'] for e in a['evidence']}
+        if not all(party in authors for party in [a['buyer'], a['seller']]):
+            raise Exception('Both buyer and seller must submit evidence before assessment')
         # Copy storage into an immutable prompt before nondeterministic execution.
         context = json.dumps(dict(terms=a['terms'], evidence=a['evidence']))
         def get_input() -> str:

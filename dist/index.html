@@ -1,1 +1,32 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OrderProof — Every promise, on record.</title><link rel="stylesheet" href="style.css"></head><body><aside><a class="brand" href="#">◈ <span>OrderProof<small>CONFIDENCE, DELIVERED.</small></span></a><div class="workspace">YOUR WORKSPACE</div><nav><button data-page="dashboard" class="selected">▦ &nbsp; Overview</button><button data-page="agreements">▤ &nbsp; Agreements <span id="navcount">0</span></button><button data-page="disputes">⚑ &nbsp; Dispute center</button><button data-page="network">◎ &nbsp; Network & setup</button></nav><div class="aside-bottom"><div class="network-dot">● &nbsp; GenLayer StudioNet</div><p>Clear terms. Shared evidence.<br>A fairer way to trade.</p><small>v0.1 · No money held</small></div></aside><main><header><div><span class="muted">Workspace</span> <span class="slash">/</span> <span id="crumb">Overview</span></div><button id="wallet" class="wallet">◉ &nbsp; Connect wallet</button></header><div class="notice"><span>◌ &nbsp; DEMO WORKSPACE</span> Browser-local records · Contract not deployed · No real-money escrow</div><section id="content"></section><footer>OrderProof <span>Built for better buyer–seller trust. Powered by GenLayer.</span></footer></main><dialog id="modal"></dialog><div id="toast" role="status"></div><script type="module" src="app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#172437">
+<meta name="description" content="Clear purchase agreements. Shared evidence. Explained outcomes. A better way for buyers and sellers to trade on GenLayer StudioNet.">
+<title>OrderProof — Confidence in every exchange.</title>
+<link rel="icon" type="image/svg+xml" href="assets/orderproof-mark.svg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside>
+<a class="brand" href="#" aria-label="OrderProof home"><img src="assets/orderproof-mark.svg" width="40" height="40" alt=""><span>orderproof<span class="brand-period">.</span><small>CONFIDENCE IN EVERY EXCHANGE</small></span></a>
+<div class="workspace">WORKSPACE</div>
+<nav aria-label="Main navigation">
+<button data-page="dashboard" class="selected"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span class="nav-label">Overview</span></button>
+<button data-page="agreements"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10a2 2 0 0 1 2 2v16l-4-2-3 2-3-2-4 2V5a2 2 0 0 1 2-2Z"/><path d="M9 8h6M9 12h6"/></svg><span class="nav-label">Agreements</span><span id="navcount">0</span></button>
+<button data-page="disputes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 7v5c0 5 9 9 9 9s9-4 9-9V7Z"/><path d="M12 8v5m0 3h.01"/></svg><span class="nav-label">Dispute center</span></button>
+<button data-page="network"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="m9 3-1 3-3 1-2 3 2 2-1 3 3 2 3-1 2 2 3-1 1-3 3-1 2-3-2-2 1-3-3-2-3 1-2-2Z"/></svg><span class="nav-label">Network & setup</span></button>
+</nav>
+<div class="sidebar-note"><span class="note-number">01 / THE PRINCIPLE</span><p>A clear agreement.<br>A more confident<br>exchange.</p><span class="note-line"></span><small>Good trade starts with trust.</small></div>
+<div class="aside-bottom"><div class="network-dot"><i></i> GenLayer StudioNet</div><small>Test environment · No money held</small></div>
+</aside>
+<main>
+<header><div class="breadcrumb"><span class="muted">Workspace</span><span class="slash">/</span><span id="crumb">Overview</span></div><div class="header-actions"><span class="testnet-chip">TESTNET</span><button id="wallet" class="wallet">Connect wallet <span aria-hidden="true">↗</span></button></div></header>
+<div class="notice"><span>DEMO WORKSPACE</span> Browser-local records · No real-money escrow</div>
+<section id="content"></section>
+<footer><div class="footer-brand">orderproof<span>.</span></div><span>Clear terms. Shared evidence. Powered by GenLayer.</span></footer>
+</main>
+<dialog id="modal"></dialog><div id="toast" role="status" aria-live="polite"></div>
+<script type="module" src="app.js"></script>
+</body></html>

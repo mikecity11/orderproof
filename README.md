@@ -4,7 +4,7 @@ Electronics purchase terms and evidence-based dispute assessments. No escrow, pa
 ## Run/build
 `npm ci` then `npx esbuild app.js --bundle --format=esm --outfile=dist/app.js`. Serve `dist/` over HTTPS or localhost.
 
-## Current status
+## Historical initial status
 Local browser demo implemented. Injected-wallet connection and StudioNet SDK adapter implemented but not live tested. Python contract source syntax checked only, not GenVM validated or deployed. No claim of live consensus. Demo assessment always returns insufficient evidence; never impersonates AI consensus.
 
 ## Deployment
@@ -35,3 +35,16 @@ Run `npm test` for deterministic lifecycle and authorization tests. These use a 
 - GitHub Actions runs tests and the frontend build.
 
 The deployed StudioNet address above still runs the earlier contract. The revised contract needs a fresh deployment and live lifecycle verification before the interface can rely on these contract guarantees. Do not treat this GitHub update as a redeployment. Existing onchain records are not migrated automatically.
+
+## Verified StudioNet revision — 22 October 2026
+Current contract: `0xf09c670448A5052B613554C27e201c7827767286`.
+Deployment transaction: `0x7a1e7cfd31756398cec6195d79eba8926edab553fc1169bd7adcc5f8791b48bf`.
+The earlier deployment above is historical. The interface defaults to the current address under a separate v2 settings key. Connecting a wallet switches into the StudioNet workspace and loads records.
+
+Live SDK checks passed: agreement creation, seller acceptance, buyer-only delivery, outsider rejection, both-party evidence requirement, a real insufficient-evidence assessment, and reopening with assessment history. Public transaction evidence is in `deployments/studionet-qa.json`. The test used dedicated faucet-funded development wallets; no user funds were used. Keys are stored only in a temporary session file, never in this repository.
+
+The receipt checker distinguishes leader execution from validator-side idle results and rejects accepted receipts containing a failed leader execution. Acceptance and finalization remain separate states.
+
+Still pending: browser wallet signing end-to-end; conclusive MATCHES / DOES_NOT_MATCH live cases; verifiable attachment content ingestion; response deadlines for nonresponsive parties. The present evidence model is written allegations and optional hashes only.
+
+`npm test` runs local Python and JavaScript tests. `npm run build` bundles the frontend and copies the contract. `scripts/live-check.mjs` creates test wallets for StudioNet only; `scripts/test-studionet.mjs` expects a freshly deployed empty contract and records live results. Never point these scripts at a production network.

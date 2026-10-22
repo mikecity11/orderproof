@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "test": "python3 -m unittest discover -s tests -v"
+    "test": "python3 -m unittest discover -s tests -v && node --test tests/*.test.mjs"
   },
   "keywords": [],
   "author": "",

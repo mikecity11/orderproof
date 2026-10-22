@@ -1,2 +1,7 @@
 node_modules/
+dist/app.js
 *.tar.gz
+__pycache__/
+.env
+.env.*
+!.env.example

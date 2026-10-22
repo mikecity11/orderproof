@@ -1,0 +1,170 @@
+{
+  "network": "studionet",
+  "chainId": 61999,
+  "contract": "0xf09c670448A5052B613554C27e201c7827767286",
+  "deploymentHash": "0x7a1e7cfd31756398cec6195d79eba8926edab553fc1169bd7adcc5f8791b48bf",
+  "startedAt": "2026-10-22T10:13:30.657Z",
+  "steps": [
+    {
+      "role": "buyer",
+      "method": "create_agreement",
+      "hash": "0xc29ff4f9dc142c716dfd774efe4c7c3a65c9a44dfdc75195c912db931f219241",
+      "expectedFailure": false,
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": [
+        {
+          "status": "return"
+        }
+      ]
+    },
+    {
+      "role": "outsider",
+      "method": "accept_agreement",
+      "hash": "0xca663faf13e01354de47fcdf90b6cabcad7c810346838f4d7f3ed9a801a9f6f5",
+      "expectedFailure": true,
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": [
+        {
+          "status": "contract_error"
+        }
+      ]
+    },
+    {
+      "role": "seller",
+      "method": "accept_agreement",
+      "hash": "0x907b0e4989721defba369eece44c0b3c26d2311c94fcba26dfdec2283116ea22",
+      "expectedFailure": false,
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": [
+        {
+          "status": "return"
+        }
+      ]
+    },
+    {
+      "role": "seller",
+      "method": "confirm_delivery",
+      "hash": "0xfd99231f0d5a3767e87f4795fe1e13b6c8476541d7980d86f34283e833ad656c",
+      "expectedFailure": true,
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": [
+        {
+          "status": "contract_error"
+        }
+      ]
+    },
+    {
+      "role": "buyer",
+      "method": "confirm_delivery",
+      "hash": "0x60174b4af1329d3c07a7077b4343de8b2c315597d057dd08bc8afe8e3dc5131a",
+      "expectedFailure": false,
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": [
+        {
+          "status": "return"
+        }
+      ]
+    },
+    {
+      "role": "buyer",
+      "method": "submit_evidence",
+      "hash": "0x802d0314a345ec1d86c9a7d6f6c50b01deb89d4f257d929bfac7978ce3db53f0",
+      "expectedFailure": false,
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": [
+        {
+          "status": "return"
+        }
+      ]
+    },
+    {
+      "role": "buyer",
+      "method": "open_dispute",
+      "hash": "0x76e0a3ae759fb9267144caba91a628801b3f880807bb7b517ca69bffbf239a62",
+      "expectedFailure": false,
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": [
+        {
+          "status": "return"
+        }
+      ]
+    },
+    {
+      "role": "buyer",
+      "method": "assess_dispute",
+      "hash": "0xf55b0b55223ec1734be735462288b2f1016754bc088e1eff651dd1967a4d373b",
+      "expectedFailure": true,
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": [
+        {
+          "status": "contract_error"
+        }
+      ]
+    },
+    {
+      "role": "seller",
+      "method": "submit_evidence",
+      "hash": "0x0fd2e35d5a884825c195903d86385af3d942ba0a39e0ab5f148e96129cc2db2d",
+      "expectedFailure": false,
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": [
+        {
+          "status": "return"
+        }
+      ]
+    },
+    {
+      "role": "buyer",
+      "method": "assess_dispute",
+      "hash": "0xe8aeb2514dd80eb9dddf1566eb1b6f9b4994a451a589a3997a5e3d72d1c8651a",
+      "expectedFailure": false,
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": [
+        {
+          "status": "return"
+        }
+      ]
+    },
+    {
+      "role": "seller",
+      "method": "submit_evidence",
+      "hash": "0x1ea84ab953aba4bf773d8d4e2181f74376f54e1a586b1ae354877c8364d2352f",
+      "expectedFailure": false,
+      "status": "FINALIZED",
+      "consensus": "MAJORITY_AGREE",
+      "execution": [
+        {
+          "status": "return"
+        }
+      ]
+    }
+  ],
+  "scope": "SDK-to-StudioNet integration; browser wallet flow not tested",
+  "assessment": {
+    "outcome": "INSUFFICIENT_EVIDENCE",
+    "explanation": "The submitted evidence does not verify the material purchase terms. Item: both statements refer generally to a device, but there is no independent evidence identifying it as the specified 'QA electronics fixture.' Specs: there is a direct conflict on storage capacity (128GB vs 256GB), and both authors explicitly state they provide no independent inspection or device data, so the required 'Phone with 256GB storage' term is unverified. The 'working display' term is not supported by any evidence at all. Price: the term 'Test only, no payment' is not supported by any submitted evidence. Deadline: the term '2026-11-01' is not supported by any submitted evidence. Condition: the term 'Used' is not supported by any submitted evidence. Because the key specification evidence is conflicting and unsupported, and other material terms lack supporting evidence, the result is insufficient evidence.",
+    "missing_evidence": [
+      "Independent inspection or device data confirming the item is the specified QA electronics fixture",
+      "Independent evidence verifying storage capacity is 256GB",
+      "Independent evidence verifying the display is working",
+      "Evidence supporting the agreed price term 'Test only, no payment'",
+      "Evidence supporting the agreed deadline '2026-11-01'",
+      "Evidence supporting the condition term 'Used'"
+    ]
+  },
+  "reopened": true,
+  "completedAt": "2026-10-22T10:17:11.409Z",
+  "passed": true,
+  "finalityCheckedAt": "2026-10-22T10:18:26.667Z",
+  "allFinalized": true
+}
